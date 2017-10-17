@@ -2,7 +2,9 @@
 
 ## About
 ### Daire Ní Chatháin: g00334757
-Adapted from:https://github.com/data-representation/data-representation.github.io/edit/master/problems/go-web-applications.md
+A set of exercises demonstrating go web apps 
+
+Taken from:https://github.com/data-representation/data-representation.github.io/edit/master/problems/go-web-applications.md
  
 # Problem set: Web applications
 This problem set is for you to learn the fundamentals of [creating a web application in Go](https://golang.org/doc/articles/wiki/).
