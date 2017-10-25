@@ -9,23 +9,29 @@ package main
 
 import (
 	//"fmt"
-//	"html/template"
+     "html/template"
 	"net/http"
+
 
 )
 
 type Message struct {
 	Message string
+//	Header string
 }
 
 // the handler function that gets executed every time a request arrives at the root
 func requestHandler(w http.ResponseWriter, r *http.Request) {
 	//serve a html file instead of hardcoded html
-	http.ServeFile(w, r, "guess.html")
+	http.ServeFile(w, r, "index.html")
 }
 
 //the handler that gets executed when a request to /guess is made
 func gameHandler(w http.ResponseWriter, r *http.Request) {
+	// the header 
+	 message:= "Guess a number between 1 and 20000:"
+	t, _ := template.ParseFiles("04_guess.tmpl")
+	t.Execute(w, &Message{Message: message})
 }
 func main() {
 	http.HandleFunc("/", requestHandler)
