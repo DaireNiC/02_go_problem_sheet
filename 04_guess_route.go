@@ -1,15 +1,34 @@
 //Author : Daire Ni Chathain
 //Go exercise 4 : Guessing game with Bootstrap
-//Resources: https://stackoverflow.com/questions/26559557/how-do-you-serve-a-static-html-file-using-a-go-web-server
+//Resources:
+// 1) http://goinbigdata.com/example-of-using-templates-in-golang/
+// 2) https://stackoverflow.com/questions/26559557/how-do-you-serve-a-static-html-file-using-a-go-web-server
+// 3) https://medium.com/@IndianGuru/understanding-go-s-template-package-c5307758fab0
 
 package main
 
 import (
+	//"fmt"
+//	"html/template"
 	"net/http"
+
 )
 
+type Message struct {
+	Message string
+}
+
+// the handler function that gets executed every time a request arrives at the root
+func requestHandler(w http.ResponseWriter, r *http.Request) {
+	//serve a html file instead of hardcoded html
+	http.ServeFile(w, r, "guess.html")
+}
+
+//the handler that gets executed when a request to /guess is made
+func gameHandler(w http.ResponseWriter, r *http.Request) {
+}
 func main() {
-	//http.Handle("/guess/", http.StripPrefix("/guess/", http.FileServer(http.Dir("./guess"))))
-	http.Handle("/", http.FileServer(http.Dir("./guess/")))
+	http.HandleFunc("/", requestHandler)
+	http.HandleFunc("/guess", gameHandler) //executes when /guess
 	http.ListenAndServe(":8080", nil)
 }
