@@ -28,3 +28,8 @@ go build ./complete_guessing_game.go
 ./complete_guessing_game.go
 ```
 
+After running the exe you can also examine the response with curl. The -v flag is short hand for verbose mode. 
+```curl
+curl 127.0.0.1:8080 -v
+curl 127.0.0.1:8080/guess -v
+```
