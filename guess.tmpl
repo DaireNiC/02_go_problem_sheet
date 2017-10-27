@@ -16,14 +16,15 @@
 </head>
 
 <body>
-
-    <h4>{{.Message}}</h4>
+    <div class="jumbotron">
+        <h2>{{.Message}}</h2>
+     <div>
     </br>
     <form action="/guess" method="GET">
         <input type="text" name="guess">
-        <br>
-        <input type="submit" value="guess">
-    </form>
+       <input type="submit" value="guess" class="btn btn-danger">
+    </form><br>
+    <h5>Your guess is {{.Guess}} </h5>
 
 </body>
 
