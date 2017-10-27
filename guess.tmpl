@@ -20,12 +20,15 @@
         <h4>{{.Message}}</h4>
      <div>
     </br>
+    {{if .Won }}
+        <a href="/guess" class="btn btn-info">Begin a new Game</a>
+     {{else}}
     <form action="/guess" method="POST">
         <input type="text" name="guess">
        <input type="submit" value="guess" class="btn btn-danger">
     </form><br>
     <h5>Your last guess was {{.Guess}} </h5>
-
+    {{ end }}
 </body>
 
 </html>

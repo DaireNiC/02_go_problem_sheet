@@ -20,6 +20,7 @@ import (
 type message struct {
 	Message string
 	Guess int
+	Won bool 
 }
 
 // the handler function that gets executed every time a request arrives at the root
@@ -29,7 +30,6 @@ func requestHandler(w http.ResponseWriter, r *http.Request) {
 
 //the handler that gets executed when a request to /guess is made
 func gameHandler(w http.ResponseWriter, r *http.Request) {
-
 	//random num generator
 	rand.Seed(time.Now().UTC().UnixNano())
 
@@ -48,7 +48,7 @@ func gameHandler(w http.ResponseWriter, r *http.Request) {
 	target, _ := strconv.Atoi(cookie.Value) //convert to int for comparision
 
 	// Set Message & guess
-	msg := &message{Message: "Guess a number between 1 & 20!", Guess: guess}
+	msg := &message{Message: "Guess a number between 1 & 20!", Guess: guess, Won: false}
 
 	//displays the random value for the cookie
 	fmt.Println("The cookie values is: ",target)
@@ -61,6 +61,9 @@ func gameHandler(w http.ResponseWriter, r *http.Request) {
 			Expires: time.Now().Add(72 * time.Hour)}
 		http.SetCookie(w, cookie) //set the target cookie with new random num
 		msg.Message = "Congratulations! You Guessed Correctly!"
+		msg.Won = true
+	} else if guess == 0 {
+		msg.Message = "Guess a number between 1 & 20"
 	} else if guess < target {
 		msg.Message = "Your guess was too low, try again."
 	} else if guess > target {
