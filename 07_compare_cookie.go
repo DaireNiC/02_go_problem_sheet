@@ -64,7 +64,7 @@ func gameHandler(w http.ResponseWriter, r *http.Request) {
 	} else if guess < target {
 		msg.Message = "Your guess was too low, try again."
 	} else if guess > target {
-		msg.Message = "Your guess was high low, try again."
+		msg.Message = "Your guess was too high, try again."
 	}
 
 	// Guess template file that will display the message struct

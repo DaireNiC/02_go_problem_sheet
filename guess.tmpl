@@ -17,14 +17,14 @@
 
 <body>
     <div class="jumbotron">
-        <h2>{{.Message}}</h2>
+        <h4>{{.Message}}</h4>
      <div>
     </br>
-    <form action="/guess" method="GET">
+    <form action="/guess" method="POST">
         <input type="text" name="guess">
        <input type="submit" value="guess" class="btn btn-danger">
     </form><br>
-    <h5>Your guess is {{.Guess}} </h5>
+    <h5>Your last guess was {{.Guess}} </h5>
 
 </body>
 
